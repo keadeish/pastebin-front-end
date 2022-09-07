@@ -39,13 +39,13 @@ function App(): JSX.Element {
 
   return (
     <>
-      {/* <PasteList 
+      <PasteList 
      title="hi"
      time="09"
      pasteid="1"
      name="unk"
      text="l"
-      /> */}
+      />
       <div className="new-paste-form">
         <input
           className="title-text"
