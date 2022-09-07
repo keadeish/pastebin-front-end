@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {PasteList} from "./pastes"
+import {pastesJSON} from "./utils/pasteList"
 
 function App(): JSX.Element {
   const [titleText, setTitleText] = useState("");
   const [nameText, setNameText] = useState("");
   const [textArea, setTextArea] = useState("");
-
+  const [recentPastesArray, setRecentPastesArray] = useState<pastesJSON[]>([])
   useEffect(() => {
     axios.get("https://pastebin-back-end.herokuapp.com/pastes").then((res) => {
       console.log(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios.get("https://pastebin-back-end.herokuapp.com/pastes/recent10pastes").then((res) => {
+      setRecentPastesArray(res.data)
     });
   }, []);
 
@@ -22,11 +30,23 @@ function App(): JSX.Element {
       })
       .then((res) => {
         console.log("SUBMITTED!!");
+        console.log(res.data)
+        //add states here to update 10 pastes
       });
   };
 
+  
+
   return (
-    <form className="new-paste-form">
+    <> 
+     {/* <PasteList 
+     title="hi"
+     time="09"
+     pasteid="1"
+     name="unk"
+     text="l"
+      /> */}
+    <div className="new-paste-form">
       <input
         className="title-text"
         placeholder="Title..."
@@ -48,7 +68,8 @@ function App(): JSX.Element {
       <button className="submit-button" onClick={() => postToBackend()}>
         SUBMIT
       </button>
-    </form>
+    </div>
+    </>
   );
 }
 
