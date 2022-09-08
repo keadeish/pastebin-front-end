@@ -49,7 +49,7 @@ input {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 5; /* number of lines to show */
-          line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
 }
 
@@ -60,5 +60,5 @@ input {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
-  gap: 1px
+  gap: 1px;
 }

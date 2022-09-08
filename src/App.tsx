@@ -24,27 +24,31 @@ function App(): JSX.Element {
   }, []);
 
   const postToBackend = () => {
-    if (textArea==="") {
-      console.log('alert')
+    if (textArea === "") {
+      console.log("alert");
     } else {
-    axios
-      .post("https://pastebin-back-end.herokuapp.com/pastes", {
-        name: nameText,
-        text: textArea,
-        title: titleText,
-        time: "NOW()",
-      })
-      .then((res) => {
-        console.log("SUBMITTED!!");
-        console.log(res.data);
-        //add states here to update 10 pastes
-      });
+      axios
+        .post("https://pastebin-back-end.herokuapp.com/pastes", {
+          name: nameText,
+          text: textArea,
+          title: titleText,
+          time: "NOW()",
+        })
+        .then((res) => {
+          axios
+            .get(
+              "https://pastebin-back-end.herokuapp.com/pastes/recent10pastes"
+            )
+            .then((res) => setRecentPastesArray(res.data));
+          console.log("SUBMITTED!!");
+          console.log(res.data);
+          //add states here to update 10 pastes
+        });
     }
   };
 
   return (
     <>
-      
       <div className="whole-page">
         <div className="new-paste-form">
           <input
@@ -70,18 +74,18 @@ function App(): JSX.Element {
           </button>
         </div>
         <div className="ten-pastes">
-        {recentPastesArray.map((onePasteJSON: pastesJSON) => {
-          return (
-            <Paste
-              key={onePasteJSON.pasteid}
-              title={onePasteJSON.title}
-              time={onePasteJSON.time}
-              pasteid={onePasteJSON.pasteid}
-              name={onePasteJSON.name}
-              text={onePasteJSON.text}
-            />
-          );
-        })}
+          {recentPastesArray.map((onePasteJSON: pastesJSON) => {
+            return (
+              <Paste
+                key={onePasteJSON.pasteid}
+                title={onePasteJSON.title}
+                time={onePasteJSON.time}
+                pasteid={onePasteJSON.pasteid}
+                name={onePasteJSON.name}
+                text={onePasteJSON.text}
+              />
+            );
+          })}
         </div>
       </div>
     </>
