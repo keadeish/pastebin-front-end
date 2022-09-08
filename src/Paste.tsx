@@ -17,6 +17,7 @@ export function Paste(props: PasteProps): JSX.Element {
       </button>
       <p>{props.time}</p>
       {open && <div>{props.text}</div>}
+      {!open && <br></br>}
     </div>
   );
 }
