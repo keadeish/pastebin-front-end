@@ -25,3 +25,7 @@ input {
 .submit-button {
   width: 400px;
 }
+
+.recent-paste {
+  border: 2px purple solid;
+}

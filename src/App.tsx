@@ -38,10 +38,6 @@ function App(): JSX.Element {
       });
   };
 
-  const redirectToPastePage = (id: number): void => {
-    console.log(`clicked paste ${id}`);
-  };
-
   return (
     <>
       {recentPastesArray.map((onePasteJSON: pastesJSON) => {
@@ -53,7 +49,6 @@ function App(): JSX.Element {
             pasteid={onePasteJSON.pasteid}
             name={onePasteJSON.name}
             text={onePasteJSON.text}
-            onClick={redirectToPastePage}
           />
         );
       })}
