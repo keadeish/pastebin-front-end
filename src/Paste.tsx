@@ -15,9 +15,10 @@ export function Paste(props: PasteProps): JSX.Element {
       <button onClick={() => setOpen((prev) => !prev)}>
         <b>Reveal {props.title}</b>
       </button>
+      
       <p>{props.time}</p>
       {open && <div>{props.text}</div>}
-      {!open && <br></br>}
+      {!open && <p className="summary-text">{props.text}</p>}
     </div>
   );
 }

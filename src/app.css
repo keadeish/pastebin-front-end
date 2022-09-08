@@ -44,6 +44,15 @@ input {
   text-align: center;
 }
 
+.summary-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+          line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
 .whole-page {
   /* border: 3px orange solid; */
   margin-top: 100px;
