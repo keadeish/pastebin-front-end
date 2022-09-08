@@ -1,16 +1,17 @@
 body {
   max-width: 1000px;
-  border: 5px solid green;
+  /* border: 5px solid green; */
   margin: 0 auto;
   height: 1000px;
 }
 
 .new-paste-form {
-  border: 5px solid yellow;
+  /* border: 5px solid yellow; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: max-content;
   height: 500px;
 }
 
@@ -24,4 +25,40 @@ input {
 
 .submit-button {
   width: 400px;
+}
+
+.ten-pastes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 350px;
+  /* border: 3px red solid */
+}
+
+.recent-paste {
+  border: 2px black solid;
+  width: 150px;
+  /* padding: 10px */
+  text-align: center;
+}
+
+.summary-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+          line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.whole-page {
+  /* border: 3px orange solid; */
+  margin-top: 100px;
+  width: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 1px
 }

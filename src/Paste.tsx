@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // import { pastesJSON } from "./utils/pasteList";
 interface PasteProps {
   pasteid: string;
@@ -5,15 +7,18 @@ interface PasteProps {
   text: string;
   title: string;
   time: string;
-  onClick: (id: number) => void;
 }
 export function Paste(props: PasteProps): JSX.Element {
+  const [open, setOpen] = useState(false);
   return (
-    <>
-      <p onClick={() => props.onClick(parseInt(props.pasteid))}>
-        <b>{props.title}</b>
-      </p>
+    <div className="recent-paste">
+      <button onClick={() => setOpen((prev) => !prev)}>
+        <b>Reveal {props.title}</b>
+      </button>
+      
       <p>{props.time}</p>
-    </>
+      {open && <div>{props.text}</div>}
+      {!open && <p className="summary-text">{props.text}</p>}
+    </div>
   );
 }

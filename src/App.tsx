@@ -24,6 +24,9 @@ function App(): JSX.Element {
   }, []);
 
   const postToBackend = () => {
+    if (textArea==="") {
+      console.log('alert')
+    } else {
     axios
       .post("https://pastebin-back-end.herokuapp.com/pastes", {
         name: nameText,
@@ -36,49 +39,50 @@ function App(): JSX.Element {
         console.log(res.data);
         //add states here to update 10 pastes
       });
-  };
-
-  const redirectToPastePage = (id: number): void => {
-    console.log(`clicked paste ${id}`);
+    }
   };
 
   return (
     <>
-      {recentPastesArray.map((onePasteJSON: pastesJSON) => {
-        return (
-          <Paste
-            key={onePasteJSON.pasteid}
-            title={onePasteJSON.title}
-            time={onePasteJSON.time}
-            pasteid={onePasteJSON.pasteid}
-            name={onePasteJSON.name}
-            text={onePasteJSON.text}
-            onClick={redirectToPastePage}
-          />
-        );
-      })}
-      <div className="new-paste-form">
-        <input
-          className="title-text"
-          placeholder="Title..."
-          value={titleText}
-          onChange={(e) => setTitleText(e.target.value)}
-        ></input>
-        <input
-          className="name-text"
-          placeholder="Name..."
-          value={nameText}
-          onChange={(e) => setNameText(e.target.value)}
-        ></input>
-        <input
-          className="text-area"
-          placeholder="Text Area..."
-          value={textArea}
-          onChange={(e) => setTextArea(e.target.value)}
-        ></input>
-        <button className="submit-button" onClick={() => postToBackend()}>
-          SUBMIT
-        </button>
+      
+      <div className="whole-page">
+        <div className="new-paste-form">
+          <input
+            className="title-text"
+            placeholder="Title..."
+            value={titleText}
+            onChange={(e) => setTitleText(e.target.value)}
+          ></input>
+          <input
+            className="name-text"
+            placeholder="Name..."
+            value={nameText}
+            onChange={(e) => setNameText(e.target.value)}
+          ></input>
+          <input
+            className="text-area"
+            placeholder="Text Area..."
+            value={textArea}
+            onChange={(e) => setTextArea(e.target.value)}
+          ></input>
+          <button className="submit-button" onClick={() => postToBackend()}>
+            SUBMIT
+          </button>
+        </div>
+        <div className="ten-pastes">
+        {recentPastesArray.map((onePasteJSON: pastesJSON) => {
+          return (
+            <Paste
+              key={onePasteJSON.pasteid}
+              title={onePasteJSON.title}
+              time={onePasteJSON.time}
+              pasteid={onePasteJSON.pasteid}
+              name={onePasteJSON.name}
+              text={onePasteJSON.text}
+            />
+          );
+        })}
+        </div>
       </div>
     </>
   );
