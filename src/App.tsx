@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { PasteList } from "./pastes";
+import { Paste } from "./Paste";
 import { pastesJSON } from "./utils/pasteList";
 
 function App(): JSX.Element {
@@ -8,6 +8,7 @@ function App(): JSX.Element {
   const [nameText, setNameText] = useState("");
   const [textArea, setTextArea] = useState("");
   const [recentPastesArray, setRecentPastesArray] = useState<pastesJSON[]>([]);
+
   useEffect(() => {
     axios.get("https://pastebin-back-end.herokuapp.com/pastes").then((res) => {
       console.log(res.data);
@@ -37,15 +38,25 @@ function App(): JSX.Element {
       });
   };
 
+  const redirectToPastePage = (id: number): void => {
+    console.log(`clicked paste ${id}`);
+  };
+
   return (
     <>
-      <PasteList 
-     title="hi"
-     time="09"
-     pasteid="1"
-     name="unk"
-     text="l"
-      />
+      {recentPastesArray.map((onePasteJSON: pastesJSON) => {
+        return (
+          <Paste
+            key={onePasteJSON.pasteid}
+            title={onePasteJSON.title}
+            time={onePasteJSON.time}
+            pasteid={onePasteJSON.pasteid}
+            name={onePasteJSON.name}
+            text={onePasteJSON.text}
+            onClick={redirectToPastePage}
+          />
+        );
+      })}
       <div className="new-paste-form">
         <input
           className="title-text"
