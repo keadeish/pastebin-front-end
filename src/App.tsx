@@ -9,11 +9,11 @@ function App(): JSX.Element {
   const [textArea, setTextArea] = useState("");
   const [recentPastesArray, setRecentPastesArray] = useState<pastesJSON[]>([]);
 
-  useEffect(() => {
-    axios.get("https://pastebin-back-end.herokuapp.com/pastes").then((res) => {
-      console.log(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://pastebin-back-end.herokuapp.com/pastes").then((res) => {
+  //     console.log(res.data);
+  //   });
+  // }, []);
 
   useEffect(() => {
     axios
@@ -34,15 +34,12 @@ function App(): JSX.Element {
           title: titleText,
           time: "NOW()",
         })
-        .then((res) => {
+        .then(() => {
           axios
             .get(
               "https://pastebin-back-end.herokuapp.com/pastes/recent10pastes"
             )
             .then((res) => setRecentPastesArray(res.data));
-          console.log("SUBMITTED!!");
-          console.log(res.data);
-          //add states here to update 10 pastes
         });
     }
   };
@@ -63,12 +60,12 @@ function App(): JSX.Element {
             value={nameText}
             onChange={(e) => setNameText(e.target.value)}
           ></input>
-          <input
+          <textarea
             className="text-area"
             placeholder="Text Area..."
             value={textArea}
             onChange={(e) => setTextArea(e.target.value)}
-          ></input>
+          ></textarea>
           <button className="submit-button" onClick={() => postToBackend()}>
             SUBMIT
           </button>
