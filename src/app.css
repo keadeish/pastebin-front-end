@@ -19,6 +19,10 @@ input {
   width: 400px;
 }
 
+textarea {
+  width: 400px;
+}
+
 .text-area {
   height: 300px;
 }
@@ -31,17 +35,19 @@ input {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  width: 350px;
+  width: 35%;
   /* border: 3px red solid */
 }
 
 .recent-paste {
   border: 2px black solid;
-  width: 150px;
-  /* padding: 10px */
-  text-align: center;
+  height: 200px;
+  width: 50%;
+  padding: 10px; box-sizing: border-box;
+  line-height: 0.9;
+  text-align: left;
 }
 
 .summary-text {
@@ -49,8 +55,10 @@ input {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 5; /* number of lines to show */
-          line-clamp: 5;
+  line-clamp: 5;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
+  cursor: pointer;
 }
 
 .whole-page {
@@ -60,5 +68,5 @@ input {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
-  gap: 1px
+  gap: 1px;
 }

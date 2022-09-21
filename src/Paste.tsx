@@ -8,17 +8,18 @@ interface PasteProps {
   title: string;
   time: string;
 }
+
 export function Paste(props: PasteProps): JSX.Element {
   const [open, setOpen] = useState(false);
   return (
     <div className="recent-paste">
-      <button onClick={() => setOpen((prev) => !prev)}>
-        <b>Reveal {props.title}</b>
-      </button>
-
-      <p>{props.time}</p>
-      {open && <div>{props.text}</div>}
-      {!open && <p className="summary-text">{props.text}</p>}
+      <div>
+        {(props.title) ? <b>{props.title}</b>: <b>Unititled</b> }
+      </div>
+      <p style={{fontStyle:'italic', color:"grey"}}>Submitted @ {props.time}</p>
+      <p style={{fontStyle:'italic', color:"grey"}}>By {(props.title) ? props.title : 'Unamed' }</p>
+      {open && <p onClick={() => setOpen((prev) => !prev)}> {props.text}</p>}
+      {!open && <p className="summary-text" onClick={() => setOpen((prev) => !prev)}>{props.text}</p>}
     </div>
   );
 }
