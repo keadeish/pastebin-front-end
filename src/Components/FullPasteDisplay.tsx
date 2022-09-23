@@ -10,7 +10,12 @@ function FullPasteDisplay(props: PastesJSON): JSX.Element {
       <h2 style={{ fontStyle: "italic", color: "grey" }}>
         By {props.title ? props.title : "Unamed"}
       </h2>
-      <p style={{ overflowWrap: "anywhere", overflow: 'auto', height: '700px' }}> {props.text}</p>
+      <p
+        style={{ overflowWrap: "anywhere", overflow: "auto", height: "700px" }}
+      >
+        {" "}
+        {props.text}
+      </p>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { PasteProps } from "../utils/types/PasteProps";
 
-export function Paste(props: PasteProps): JSX.Element {
+export function RecentPaste(props: PasteProps): JSX.Element {
   return (
     <div className="recent-paste">
       <div>{props.title ? <b>{props.title}</b> : <b>Unititled</b>}</div>

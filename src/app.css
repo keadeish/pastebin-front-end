@@ -1,13 +1,26 @@
 body {
   max-width: 1000px;
-  border: 5px solid green;
+  /* border: 5px solid green; */
   margin: 0 auto;
   height: 1000px;
 }
 
+.navbar {
+  margin-left: 2.5%;
+  margin-top: 4%;
+  font-size: 26px;
+}
+
+.navbar > button {
+  font-size: 16px;
+}
+
+.navbar > button > span {
+  font-size: 22px;
+}
+
 .container {
-  border: 3px orange solid;
-  padding-top: 40px;
+  /* border: 3px orange solid;   */
   width: auto;
   display: flex;
   align-items: flex-start;
@@ -17,9 +30,9 @@ body {
 }
 
 .new-paste-form {
-  border: 5px solid yellow;
+  /* border: 5px solid yellow; */
   width: 40%;
-  height: 500px;  
+  height: 500px;
 }
 
 .full-paste-container {
@@ -38,7 +51,7 @@ textarea {
 }
 
 .submit-button {
-  width: 400px;
+  width: 101.5%;
 }
 
 .ten-pastes {
@@ -48,12 +61,12 @@ textarea {
   justify-content: center;
   align-items: center;
   width: 35%;
-  border: 3px red solid;
+  /* border: 3px red solid; */
 }
 
 .recent-paste {
   border: 2px black solid;
-  height: 190px;
+  height: 183px;
   width: 50%;
   padding: 10px;
   box-sizing: border-box;
@@ -72,4 +85,3 @@ textarea {
   overflow-wrap: break-word;
   cursor: pointer;
 }
-

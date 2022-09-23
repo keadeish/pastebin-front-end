@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Paste } from "./Components/Paste";
+import { RecentPaste } from "./Components/RecentPaste";
 import { PastesJSON } from "./utils/types/PastesJSON";
 import PasteForm from "./Components/PasteForm";
 import FullPasteDisplay from "./Components/FullPasteDisplay";
@@ -22,23 +22,30 @@ function App(): JSX.Element {
   }, [refresh]);
 
   return (
-    <div className="container">
-      {renderPasteForm && <PasteForm setRefresh={setRefresh} />}
-      {!renderPasteForm && <FullPasteDisplay {...FullPasteDisplayJSON} />}
-      <div className="ten-pastes">
-        {recentPastesArray.map((onePasteJSON: PastesJSON) => {
-          return (
-            <Paste
-              key={onePasteJSON.pasteid}
-              {...onePasteJSON}
-              setFullPasteDisplayJSON={setFullPasteDisplayJSON}
-              setRenderPasteForm={setRenderPasteForm}
-              renderPasteForm={renderPasteForm}
-            />
-          );
-        })}
+    <>
+      <ul className="navbar">
+        <button onClick={() => setRenderPasteForm(true)}>
+          <span>⌂</span> Home
+        </button>
+      </ul>
+      <div className="container">
+        {renderPasteForm && <PasteForm setRefresh={setRefresh} />}
+        {!renderPasteForm && <FullPasteDisplay {...FullPasteDisplayJSON} />}
+        <div className="ten-pastes">
+          {recentPastesArray.map((onePasteJSON: PastesJSON) => {
+            return (
+              <RecentPaste
+                key={onePasteJSON.pasteid}
+                {...onePasteJSON}
+                setFullPasteDisplayJSON={setFullPasteDisplayJSON}
+                setRenderPasteForm={setRenderPasteForm}
+                renderPasteForm={renderPasteForm}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
