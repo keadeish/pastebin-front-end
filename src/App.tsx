@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Paste } from "./Components/Paste";
-import { pastesJSON } from "./utils/types/pasteList";
+import { PastesJSON } from "./utils/types/PastesJSON";
 import PasteForm from "./Components/PasteForm";
+import FullPasteDisplay from "./Components/FullPasteDisplay";
 
 function App(): JSX.Element {
-  
-  const [recentPastesArray, setRecentPastesArray] = useState<pastesJSON[]>([]);
-  const [refresh, setRefresh] = useState(false)
-  const [renderPasteForm, setRenderPasteForm] = useState(true)
+  const [recentPastesArray, setRecentPastesArray] = useState<PastesJSON[]>([]);
+  const [refresh, setRefresh] = useState(false);
+  const [renderPasteForm, setRenderPasteForm] = useState(true);
+  const [FullPasteDisplayJSON, setFullPasteDisplayJSON] = useState<PastesJSON>(
+    recentPastesArray[0]
+  );
 
   useEffect(() => {
     axios
@@ -19,22 +22,22 @@ function App(): JSX.Element {
   }, [refresh]);
 
   return (
-    <div className="container">          
-        {renderPasteForm && <PasteForm setRefresh={setRefresh}/>}
-        <div className="ten-pastes">
-          {recentPastesArray.map((onePasteJSON: pastesJSON) => {
-            return (
-              <Paste
-                key={onePasteJSON.pasteid}
-                title={onePasteJSON.title}
-                time={onePasteJSON.time}
-                pasteid={onePasteJSON.pasteid}
-                name={onePasteJSON.name}
-                text={onePasteJSON.text}
-              />
-            );
-          })}
-        </div>      
+    <div className="container">
+      {renderPasteForm && <PasteForm setRefresh={setRefresh} />}
+      {!renderPasteForm && <FullPasteDisplay {...FullPasteDisplayJSON} />}
+      <div className="ten-pastes">
+        {recentPastesArray.map((onePasteJSON: PastesJSON) => {
+          return (
+            <Paste
+              key={onePasteJSON.pasteid}
+              {...onePasteJSON}
+              setFullPasteDisplayJSON={setFullPasteDisplayJSON}
+              setRenderPasteForm={setRenderPasteForm}
+              renderPasteForm={renderPasteForm}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
