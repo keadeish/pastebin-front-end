@@ -8,7 +8,7 @@ function FullPasteDisplay(props: PastesJSON): JSX.Element {
         Submitted @ {props.time}
       </h2>
       <h2 style={{ fontStyle: "italic", color: "grey" }}>
-        By {props.title ? props.title : "Unamed"}
+        By {props.name ? props.name : "Unamed"}
       </h2>
       <p
         style={{ overflowWrap: "anywhere", overflow: "auto", height: "700px" }}
