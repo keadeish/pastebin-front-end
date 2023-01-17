@@ -30,6 +30,7 @@ function PasteForm(props: PasteFormProps): JSX.Element {
   };
   return (
     <div className="new-paste-form">
+      <h2>Submit a paste!</h2>
       <input
         className="title-text"
         placeholder="Title..."
