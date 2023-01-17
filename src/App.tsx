@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { RecentPaste } from "./Components/RecentPaste";
-import { PastesJSON } from "./utils/types/PastesJSON";
+import { PastesJSON } from "./utils/types"
 import PasteForm from "./Components/PasteForm";
 import FullPasteDisplay from "./Components/FullPasteDisplay";
+import { BASEURL } from "./utils/types";
 
 function App(): JSX.Element {
   const [recentPastesArray, setRecentPastesArray] = useState<PastesJSON[]>([]);
@@ -15,7 +16,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     axios
-      .get("https://pastebin-back-end.herokuapp.com/pastes/recent10pastes")
+      .get(`${BASEURL}/pastes/recent10pastes`)
       .then((res) => {
         setRecentPastesArray(res.data);
       });

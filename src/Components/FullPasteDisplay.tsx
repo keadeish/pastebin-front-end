@@ -1,4 +1,4 @@
-import { PastesJSON } from "../utils/types/PastesJSON";
+import { PastesJSON } from "../utils/types";
 
 function FullPasteDisplay(props: PastesJSON): JSX.Element {
   return (

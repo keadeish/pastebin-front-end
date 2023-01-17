@@ -1,4 +1,4 @@
-import { PasteProps } from "../utils/types/PasteProps";
+import { PasteProps } from "../utils/types";
 
 export function RecentPaste(props: PasteProps): JSX.Element {
   return (

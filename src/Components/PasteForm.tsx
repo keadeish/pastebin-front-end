@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { PasteFormProps } from "../utils/types/PasteFormProps";
+import { BASEURL } from "../utils/types";
+import { PasteFormProps } from "../utils/types";
 
 function PasteForm(props: PasteFormProps): JSX.Element {
   const [titleText, setTitleText] = useState("");
@@ -12,7 +13,7 @@ function PasteForm(props: PasteFormProps): JSX.Element {
       console.log("alert");
     } else {
       axios
-        .post("https://pastebin-back-end.herokuapp.com/pastes", {
+        .post(`${BASEURL}/pastes`, {
           name: nameText,
           text: textArea,
           title: titleText,
@@ -21,7 +22,7 @@ function PasteForm(props: PasteFormProps): JSX.Element {
         .then(() => {
           axios
             .get(
-              "https://pastebin-back-end.herokuapp.com/pastes/recent10pastes"
+              `${BASEURL}/pastes/recent10pastes`
             )
             .then(() => props.setRefresh((prev) => !prev));
         });
@@ -39,7 +40,7 @@ function PasteForm(props: PasteFormProps): JSX.Element {
         className="name-text"
         placeholder="Name..."
         value={nameText}
-        onChange={(e) => setNameText(e.target.value)}
+        onChange={(e) => setNameText(e.target.value)}        
       ></input>
       <textarea
         className="text-area"
