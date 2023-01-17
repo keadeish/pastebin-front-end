@@ -33,6 +33,7 @@ function App(): JSX.Element {
         {renderPasteForm && <PasteForm setRefresh={setRefresh} />}
         {!renderPasteForm && <FullPasteDisplay {...FullPasteDisplayJSON} />}
         <div className="ten-pastes">
+          <h2 className="recent-header">Recently posted pastes</h2>
           {recentPastesArray.map((onePasteJSON: PastesJSON) => {
             return (
               <RecentPaste
