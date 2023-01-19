@@ -1,4 +1,4 @@
-export const BASEURL = "http://localhost:4000";
+export const BASEURL = "https://pastebin-backend-g4p7.onrender.com";
 
 export interface PasteFormProps {
   setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
