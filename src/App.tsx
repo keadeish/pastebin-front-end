@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { RecentPaste } from "./Components/RecentPaste";
-import { PastesJSON } from "./utils/types"
+import { PastesJSON } from "./utils/types";
 import PasteForm from "./Components/PasteForm";
 import FullPasteDisplay from "./Components/FullPasteDisplay";
 import { BASEURL } from "./utils/types";
@@ -15,11 +15,9 @@ function App(): JSX.Element {
   );
 
   useEffect(() => {
-    axios
-      .get(`${BASEURL}/pastes/recent10pastes`)
-      .then((res) => {
-        setRecentPastesArray(res.data);
-      });
+    axios.get(`${BASEURL}/pastes/recent10pastes`).then((res) => {
+      setRecentPastesArray(res.data);
+    });
   }, [refresh]);
 
   return (

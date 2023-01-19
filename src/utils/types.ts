@@ -1,7 +1,7 @@
-export const BASEURL = 'http://localhost:4000'
+export const BASEURL = "http://localhost:4000";
 
 export interface PasteFormProps {
-    setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface PasteProps {
@@ -16,10 +16,9 @@ export interface PasteProps {
 }
 
 export interface PastesJSON {
-    pasteid: string;
-    name: string;
-    text: string;
-    title: string;
-    time: string;
+  pasteid: string;
+  name: string;
+  text: string;
+  title: string;
+  time: string;
 }
-  

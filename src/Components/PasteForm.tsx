@@ -21,9 +21,7 @@ function PasteForm(props: PasteFormProps): JSX.Element {
         })
         .then(() => {
           axios
-            .get(
-              `${BASEURL}/pastes/recent10pastes`
-            )
+            .get(`${BASEURL}/pastes/recent10pastes`)
             .then(() => props.setRefresh((prev) => !prev));
         });
     }
@@ -41,7 +39,7 @@ function PasteForm(props: PasteFormProps): JSX.Element {
         className="name-text"
         placeholder="Name..."
         value={nameText}
-        onChange={(e) => setNameText(e.target.value)}        
+        onChange={(e) => setNameText(e.target.value)}
       ></input>
       <textarea
         className="text-area"

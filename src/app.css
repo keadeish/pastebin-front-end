@@ -49,7 +49,7 @@ body {
 
 input {
   width: 100%;
-  height: 30px;  
+  height: 30px;
 }
 
 textarea {
@@ -91,13 +91,15 @@ textarea {
   display: -webkit-box;
   -webkit-line-clamp: 5; /* number of lines to show */
   line-clamp: 5;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   cursor: pointer;
   font-size: 12px;
 }
 
-code, .summary-text, .full-display-text {
-  font-family: 'Courier New', monospace;
+code,
+.summary-text,
+.full-display-text {
+  font-family: "Courier New", monospace;
   white-space: pre;
   word-wrap: normal;
   overflow-wrap: normal;
@@ -108,11 +110,11 @@ code, .summary-text, .full-display-text {
   overflow-wrap: anywhere;
   overflow: auto;
   max-height: 760px;
-  background-color: #ffffe7
+  background-color: #ffffe7;
 }
 
 .copy-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   opacity: 50%;
   color: white;
   padding: 6px 10px;
@@ -129,6 +131,3 @@ code, .summary-text, .full-display-text {
   background-color: #3e8e41;
   opacity: 80%;
 }
-
-
-
