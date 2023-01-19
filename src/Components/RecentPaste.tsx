@@ -10,7 +10,7 @@ export function RecentPaste(props: PasteProps): JSX.Element {
       <p style={{ fontStyle: "italic", color: "grey" }}>
         By {props.name ? props.name : "Unamed"}
       </p>
-      <p
+      <div
         className="summary-text"
         onClick={(): void => {
           props.setFullPasteDisplayJSON({
@@ -24,7 +24,7 @@ export function RecentPaste(props: PasteProps): JSX.Element {
         }}
       >
         {props.text}
-      </p>
+      </div>
     </div>
   );
 }
